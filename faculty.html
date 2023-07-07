@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty</title>
+    <!-- swiper css link  -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="./style.css"> -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 2em 1em;
+            text-align: center;
+        }
+
+        .column {
+            width: 100%;
+            padding: 0.5em 0;
+        }
+
+        h1 {
+            width: 100%;
+            text-align: center;
+            font-size: 3.5em;
+            color: #1f003b;
+        }
+
+        .card {
+            box-shadow: 0 0 2.4em rgba(25, 0, 58, 0.1);
+            padding: 3.5em 1em;
+            border-radius: 0.6em;
+            color: #1f003b;
+            cursor: pointer;
+            transition: 0.3s;
+            background-color: #ffffff;
+        }
+
+        .card .img-container {
+            width: 8em;
+            /* height: 8em; */
+            background-color: #a993ff;
+            padding: 0.5em;
+            border-radius: 50%;
+            margin: 0 auto 2em auto;
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 50%;
+        }
+
+        .card h3 {
+            font-weight: 500;
+        }
+
+        .card p {
+            font-weight: 300;
+            text-transform: uppercase;
+            margin: 0.5em 0 2em 0;
+            letter-spacing: 2px;
+        }
+
+        .icons {
+            width: 50%;
+            min-width: 180px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .card a {
+            text-decoration: none;
+            color: inherit;
+            font-size: 1.4em;
+        }
+
+        .card:hover {
+            background: linear-gradient(#6045ea, #8567f7);
+            color: #ffffff;
+        }
+
+        .card:hover .img-container {
+            transform: scale(1.15);
+        }
+
+        /* @media screen and (min-width: 768px) {
+            section {
+                padding: 1em 7em;
+            }
+        } */
+
+        @media screen and (min-width: 992px) {
+            /* section {
+                padding: 1em;
+            } */
+
+            .card {
+                padding: 5em 1em;
+                margin-bottom: 10px;
+            }
+
+            .column {
+                flex: 0 0 33.33%;
+                max-width: 33.33%;
+                padding: 0 1em;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <section class="header">
+        <a href="/index.html" class="logo"><a href="https://www.iiita.ac.in"><img
+                    src="https://serl.iiita.ac.in/head_main.jpg" alt=""
+                    style="height: 30px;margin-left: 0px;" /></a></a>
+
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <a href="/index.html">home</a>
+                    <a href="/faculty.html">faculty</a>
+                    <a href="/research.html">researchers</a>
+                    <a href="/cour.html">courses</a>
+                    <!-- <a href="package.php">package</a> -->
+                    <a href="/publi.html">publication</a>
+                    <a href="/proj.html">projects</a>
+                    <a href="/refer.html">references</a>
+                    <!-- <a href="/login.html">login</a> -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Login
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="/login_stu.html">Student Login</a>
+                            <a class="dropdown-item" href="/login_ad.html">Admin Login</a>
+                            <!-- <a class="dropdown-item" href="#visi">Vision and Mission</a>
+                            <a class="dropdown-item" href="#achie">Achievements</a> -->
+                            <!-- <a class="dropdown-item" href="#fax">Faculty</a> -->
+                        </div>
+                    </li>
+                    <!-- <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Login
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="/login_stu.html">Student Login</a>
+                            <a class="dropdown-item" href="/login_ad.html">Admin Login</a>
+                            <a class="dropdown-item" href="#visi">Vision and Mission</a>
+                            <a class="dropdown-item" href="#achie">Achievements</a> -->
+                    <!-- <a class="dropdown-item" href="#fax">Faculty</a>
+                        </div>
+                    </li> -->
+                </ul>
+
+
+            </div>
+
+            <!-- <a href="#">signup</a> -->
+
+        </nav>
+        <div id="menu-btn" class="fas fa-bars"></div>
+    </section>
+
+
+    <section>
+        <div class="row">
+            <h1>Faculty</h1>
+        </div>
+        <div class="row">
+            <!-- Column 1-->
+            <div class="column">
+                <div class="card">
+                    <div class="img-container">
+                        <img src="img/opvyas.jpg" />
+                    </div>
+                    <h3>PROF.OP VYAS</h3>
+                    <p>PROFESSOR</p>
+                    <div class="icons">
+                        <a href="https://scholar.google.co.in/citations?user=9-NwhCAAAAAJ&hl=en">
+                            <i class="fa-brands fa-google"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/prof-dr-om-prakash-vyas-5a649a6/">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://www.researchgate.net/profile/O-Vyas">
+                            <i class="fa-brands fa-researchgate"></i>
+                        </a>
+                        <a href="https://mail.google.com/mail/u/0/?hl=en&tf=cm&fs=1&to=opvyas@iiita.ac.in">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Column 2  height="112px"-->
+            <div class="column">
+                <div class="card">
+                    <div class="img-container">
+                        <img src="img/sonali.jpeg" />
+                    </div>
+                    <h3>DR. SONALI AGARWAL</h3>
+                    <p>ASST.PROFESSOR</p>
+                    <div class="icons">
+                        <a href="https://scholar.google.co.in/citations?user=hPvt6d8AAAAJ&hl=en">
+                            <i class="fa-brands fa-google"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/sonali-agarwal-87395a11a/">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://www.researchgate.net/profile/Sonali-Agarwal-2">
+                            <i class="fa-brands fa-researchgate"></i>
+                        </a>
+                        <a href="https://mail.google.com/mail/u/0/?hl=en&tf=cm&fs=1&to=sonali@iiita.ac.in">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card">
+                    <div class="img-container">
+                        <img src="img/chinnappa.jpeg" />
+                    </div>
+                    <h3>PROF. CHANNAPPA B AKKI</h3>
+                    <p>PROFESSOR</p>
+                    <div class="icons">
+                        <a href="https://scholar.google.co.in/citations?user=ghaDf9UAAAAJ&hl=en">
+                            <i class="fa-brands fa-google"></i>
+                        </a>
+                        <a href="https://iiitdwd.irins.org/profile/102743">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://www.scopus.com/authid/detail.uri?authorId=57009118800">
+                            <i class="fa-brands fa-researchgate"></i>
+                        </a>
+                        <a href="https://mail.google.com/mail/u/0/?hl=en&tf=cm&fs=1&to=akki.channappa@iiita.ac.in">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card">
+                    <div class="img-container">
+                        <img src="img/vijendra.jpg" />
+                    </div>
+                    <h3>DR. VIJENDRA SINGH</h3>
+                    <p>HOD</p>
+                    <div class="icons">
+                        <a href="https://scholar.google.com/citations?user=8i9FP_QAAAAJ&hl=en">
+                            <i class="fa-brands fa-google"></i>
+                        </a>
+                        <a href="https://in.linkedin.com/in/vrijendra-singh-8287081a">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://www.researchgate.net/profile/Vijender_Singh_Aswal">
+                            <i class="fa-brands fa-researchgate"></i>
+                        </a>
+                        <a href="https://mail.google.com/mail/u/0/?hl=en&tf=cm&fs=1&to=vrij@iiita.ac.in">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <div class="img-container">
+                        <img src="img/abhishek.jpeg" />
+                    </div>
+                    <h3>DR. ABHISHEK VAISH</h3>
+                    <p>ASST.PROFESSOR</p>
+                    <div class="icons">
+                        <a href="https://scholar.google.co.in/citations?user=FMyTs4MAAAAJ&hl=en">
+                            <i class="fa-brands fa-google"></i>
+                        </a>
+                        <a href="https://in.linkedin.com/in/abhishek-vaish-0bb33713">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://www.researchgate.net/profile/Abhishek-Vaish-2">
+                            <i class="fa-brands fa-researchgate"></i>
+                        </a>
+                        <a href="https://mail.google.com/mail/u/0/?hl=en&tf=cm&fs=1&to=abhishek@iiita.ac.in">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column 3-->
+            <div class="column">
+                <div class="card">
+                    <div class="img-container">
+                        <img src="img/omkarendra.jpg" />
+                    </div>
+                    <h3>DR. OMKARENDRA TIWARI</h3>
+                    <p>ASST.PROFESSOR</p>
+                    <div class="icons">
+                        <a href="https://scholar.google.com/citations?user=WBl7kz4AAAAJ&hl=en&oi=sra">
+                            <i class="fa-brands fa-google"></i>
+                        </a>
+                        <a href="https://in.linkedin.com/in/omkarendra">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://www.researchgate.net/profile/Omkarendra-Tiwari">
+                            <i class="fa-brands fa-researchgate"></i>
+                        </a>
+                        <a href="https://mail.google.com/mail/u/0/?hl=en&tf=cm&fs=1&to=omkarendra@iiita.ac.in">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+
+
+    <!-- 
+    <div class="row" style="padding:20px;margin:20px;" id="fac">
+        <div class="col-sm-12;">
+            <div class="w3-card-4" style="width:100%;background-color:#a5d8ff;">
+                <header class="w3-container w3-azure"><br>
+                    <h3 style="margin:0px;padding:0px;"><a href="http://www.sonaliagarwal.com/">Dr. Sonali Agarwal</a>
+                    </h3>
+                    <p>Assistant Professor <br>
+                        IIIT Allahabad<br> </p>
+                </header>
+
+                <div class="w3-container"> <br>
+                    <p><img src="/img/sonali.jpg" alt="Sonali"
+                            style="width:300px;height:220px;margin-bottom:20px;margin-right:10px;" align="left">
+                        <b>Address:</b><br>
+                        Room No.: 5203, <br>
+                        CC3 Building <br>
+                        Indian Institute of Information Technology <br>
+                        Devghat Jhalwa <br>
+                        Allahabad (UP) INDIA <br><br>
+                        <b>Contact No:</b><br>
+                        Phone: 0532-2922424 <br>
+
+
+                        E Mail: sonali@iiita.ac.in <br>
+                        raiagarwalsonali@gmail.com <br>
+                        <a href="https://profile.iiita.ac.in/sonali/">MY HOME</a><br>
+                        <a href="https://in.linkedin.com/in/dr-sonali-agarwal-bb091521">Linkedin</a><br>
+                        <a href="https://scholar.google.co.in/citations?user=hPvt6d8AAAAJ&hl=en">Google Scholar</a><br>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="padding:20px;margin:20px;" id="fac1">
+        <div class="col-sm-12;">
+            <div class="w3-card-4" style="width:100%;background-color:#ffe066;">
+                <header class="w3-container w3-azure"><br>
+                    <h3 style="margin:0px;padding:0px;"><a
+                            href="https://it.iiita.ac.in/?pg=facultypage&uid=akki.channappa">Prof. Channappa B Akki</a>
+                    </h3>
+                    <p>Professor<br>
+                        IIIT Allahabad<br> </p>
+                </header>
+
+                <div class="w3-container"> <br>
+                    <p><img src="/img/akki.channappa.jpg"
+                            style="width:180px;height:220px;margin-bottom:20px;margin-right:10px;" align="left">
+                        <b>Address:</b><br>
+                        Indian Institute of Information Technology - Allahabad<br>
+                        Devghat, Jhalwa,<br>
+                        Allahabad 211 015, (UP) INDIA<br><br>
+
+
+                        <b>Contact No:</b><br>
+                        Phone: +91-532-2922161<br>
+                        +91-8197277253 (M)
+
+                        <br><br>
+                        E-mail: akki.channappa@iiita.ac.in<br>
+                        akki.channappa@gmail.com<br>
+                        <a href="https://it.iiita.ac.in/?pg=facultypage&uid=akki.channappa">MY HOME</a><br>
+                        <a href="https://in.linkedin.com/in/channappa-akki-0627496a">Linkedin</a><br>
+                        <a href="https://scholar.google.co.in/citations?user=ghaDf9UAAAAJ&hl=en">Google Scholar</a><br>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="padding:20px;margin:20px;" id="fac2">
+        <div class="col-sm-12;">
+            <div class="w3-card-4" style="width:100%;background-color:#c0eb75;">
+                <header class="w3-container w3-azure"><br>
+                    <h3 style="margin:0px;padding:0px;"><a href="http://profile.iiita.ac.in/vrij/">Dr. Vrijendra
+                            Singh</a></h3>
+                    <p>HOD IT<br>
+                        IIIT Allahabad<br> </p>
+                </header>
+
+                <div class="w3-container"> <br>
+                    <p><img src="/img/image003.jpg" alt="Sonali"
+                            style="width:180px;height:220px;margin-bottom:20px;margin-right:10px;" align="left">
+                        <b>Address:</b><br>
+                        Computer Center- 3,<br>
+                        Indian Institute of Information Technology Allahabad,<br>
+                        Deoghat, Jhalwa,<br>
+                        Allahabad (India)<br><br>
+                        <b>Contact No:</b><br>
+                        Office : +91-532-2922092<br>
+                        Residence : +91-532-2922611<br>
+                        Mobile : +91-737-6581984<br>
+                        Fax : +91-532-2430006<br><br>
+
+                        Email: vrijendra.singh@gmail.com<br>
+                        vrij@iiita.ac.in<br>
+                        <a href="https://profile.iiita.ac.in/vrij/">MY HOME</a><br>
+                        <a href="https://in.linkedin.com/in/vrijendra-singh-8287081a">LinkedIn</a><br>
+                        <a href="https://scholar.google.com/citations?user=8i9FP_QAAAAJ&hl=en">Google Scholar</a><br>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+</body>
+
+</html>

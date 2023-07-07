@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- swiper css link  -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link href="https://cdn.datatables.net/1.12.0/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.0/js/dataTables.bootstrap5.min.js"></script>
+
+    <style>
+        /* card {
+            font-size: medium;
+        } */
+        .card-body {
+            font-size: medium;
+        }
+
+        .header .navbar a {
+            margin-left: 800px;
+        }
+
+        .col-sm-9 {
+            font-size: medium;
+        }
+
+        .btn {
+            font-size: medium;
+        }
+
+        .modal-content {
+            font-size: medium;
+        }
+    </style>
+
+    <title>Edit Publications | Admin SERL</title>
+</head>
+
+<body>
+
+    <section class="header">
+
+        <a href="/index.html" class="logo"><a href="https://www.iiita.ac.in"><img
+                    src="https://serl.iiita.ac.in/head_main.jpg" alt=""
+                    style="height: 30px;margin-left: 20px;" /></a></a>
+
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <!-- <a href="/index.html">home</a> -->
+                    <!-- <a href="/faculty.html">faculty</a> -->
+                    <!-- <a href="/research.html">researchers</a> -->
+                    <!-- <a href="/cour.html">courses</a> -->
+                    <!-- <a href="package.php">package</a> -->
+                    <!-- <a href="/publi.html">publication</a> -->
+                    <!-- <a href="/proj.html">projects</a> -->
+                    <!-- <a href="/refer.html">references</a> -->
+                    <!-- <a href="/login.html">login</a> -->
+                    <!-- <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Login
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="/login_stu.html">Student Login</a>
+                            <a class="dropdown-item" href="/login_ad.html">Admin Login</a>
+                            <a class="dropdown-item" href="#visi">Vision and Mission</a>
+                            <a class="dropdown-item" href="#achie">Achievements</a> -->
+                    <!-- <a class="dropdown-item" href="#fax">Faculty</a>
+                        </div>
+                    </li> -->
+                    <a href="/login_ad.html">log out</a>
+                </ul>
+
+
+            </div>
+
+            <!-- <a href="#">signup</a> -->
+
+        </nav>
+
+        <div id="menu-btn" class="fas fa-bars"></div>
+
+
+    </section>
+
+    <div class="container">
+        <h1 class="mt-4 mb-4 text-center">
+            <%= title %>
+        </h1>
+
+        <span id="message"></span>
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col col-sm-9">Publications Data</div>
+                    <div class="col col-sm-3">
+                        <button type="button" id="add_data" class="btn btn-success btn-sm float-end">Add</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered" id="sample_data">
+                        <thead>
+                            <tr>
+                                <th>Index</th>
+                                <th>Author Name</th>
+                                <th>
+                                    <center>Title</center>
+                                </th>
+                                <th>
+                                    <center>Journal</center>
+                                </th>
+                                <th>
+                                    <center>Date of Publication</center>
+                                </th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <br><br><br>
+    </div>
+
+    <div class="modal" tabindex="-1" id="action_modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form method="post" id="sample_form">
+                    <div class="modal-header" id="dynamic_modal_title">
+                        <h5 class="modal-title"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label">Index</label>
+                            <input type="text" name="id_pub" id="id_pub" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Author of Publication</label>
+                            <input type="text" name="author_pub" id="author_pub" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Title of Publication</label>
+                            <input type="text" name="title_pub" id="title_pub" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Journal</label>
+                            <input type="text" name="jour_pub" id="jour_pub" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Date of Publication</label>
+                            <input type="date" name="date_pub" id="date_pub" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" name="id" id="id" />
+                        <input type="hidden" name="action" id="action" value="Add" />
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" id="action_button">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        $(document).ready(function () {
+
+            load_data();
+
+            function load_data() {
+                $.ajax({
+                    url: "http://localhost:3000/action1",
+                    method: "POST",
+                    data: { action: 'fetch' },
+                    dataType: "JSON",
+
+                    success: function (data) {
+                        var html = '';
+
+                        if (data.data.length > 0) {
+                            for (var count = 0; count < data.data.length; count++) {
+                                html += `
+                            <tr>
+                                <td>`+ data.data[count].id_pub + `</td>
+                                <td>`+ data.data[count].author_pub + `</td>
+                                <td>`+ data.data[count].title_pub + `</td>
+                                <td>`+ data.data[count].jour_pub + `</td>
+                                <td>`+ data.data[count].date_pub + `</td>
+                                <td><button type="button" class="btn btn-warning btn-sm edit" data-id="`+ data.data[count].id_pub + `">Edit</button>&nbsp;<button type="button" class="btn btn-danger btn-sm delete" data-id="` + data.data[count].id_pub + `">Delete</button></td>
+                            </tr>
+                            `;
+                            }
+                        }
+
+                        $('#sample_data tbody').html(html);
+                    }
+                });
+            }
+
+
+
+            $('#add_data').click(function () {
+
+                $('#dynamic_modal_title').text('Add Data');
+
+                $('#sample_form')[0].reset();
+
+                $('#action').val('Add');
+
+                $('#action_button').text('Add');
+
+                $('#action_modal').modal('show');
+
+            });
+
+            $('#sample_form').on('submit', function (event) {
+
+                event.preventDefault();
+
+                $.ajax({
+                    url: "http://localhost:3000/action1",
+                    method: "POST",
+                    data: $('#sample_form').serialize(),
+                    dataType: "JSON",
+                    beforeSend: function () {
+                        $('#action_button').attr('disabled', 'disabled');
+                    },
+                    success: function (data) {
+                        $('#action_button').attr('disabled', false);
+
+                        $('#message').html('<div class="alert alert-success">' + data.message + '</div>');
+
+                        $('#action_modal').modal('hide');
+
+                        load_data();
+
+                        setTimeout(function () {
+                            $('#message').html('');
+                        }, 5000);
+                    }
+                });
+
+            });
+
+            $(document).on('click', '.edit', function () {
+
+                var id_pub = $(this).data('id');
+
+                $('#dynamic_modal_title').text('Edit Data');
+
+                $('#action').val('Edit');
+
+                $('#action_button').text('Edit');
+
+                $('#action_modal').modal('show');
+
+                $.ajax({
+                    url: "http://localhost:3000/action1",
+                    method: "POST",
+                    data: { id_pub: id_pub, action: 'fetch_single' },
+                    dataType: "JSON",
+                    success: function (data) {
+                        // $('#first_name').val(data.first_name);
+                        $('#author_pub').val(data.author_pub);
+                        $('#title_pub').val(data.title_pub);
+                        $('#jour_pub').val(data.jour_pub);
+                        $('#id_pub').val(data.id_pub);
+                        $('#date_pub').val(data.date_pub);
+                    }
+                });
+
+            });
+
+            $(document).on('click', '.delete', function () {
+
+                var id_pub = $(this).data('id');
+
+                if (confirm("Are you sure you want to delete this data?")) {
+                    $.ajax({
+                        url: "http://localhost:3000/action1",
+                        method: "POST",
+                        data: { action: 'delete', id_pub: id_pub },
+                        dataType: "JSON",
+                        success: function (data) {
+                            $('#message').html('<div class="alert alert-success">' + data.message + '</div>');
+                            load_data();
+                            setTimeout(function () {
+                                $('#message').html('');
+                            }, 5000);
+                        }
+                    });
+                }
+
+            });
+
+
+        });
+    </script>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script> -->
+
+</body>
+
+</html>
